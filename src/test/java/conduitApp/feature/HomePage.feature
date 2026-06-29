@@ -14,6 +14,12 @@ Scenario: Check response tags is an array
    Then status 200
    And match response.tags == '#array'
 
+Scenario: Validate each value of the json Array "tags" is a String
+   Given path "tags"
+   When method Get
+   Then status 200
+   And match each response.tags == "#string"
+
 Scenario: Check response tags contains "YouTube"
    Given path "tags"
    When method Get
@@ -37,3 +43,11 @@ Scenario: Get 10 articles from the page [Optimized manner 2]
    Given params {limit : 10, offset : 0}
    When method Get
    Then status 200   
+
+Scenario: Verify size of the json Array is 10
+   Given path "articles"
+   Given params {limit : 10, offset : 0}
+   When method Get
+   Then status 200      
+   And match response.articles == "#[10]"
+   And match response.articlesCount == 10
