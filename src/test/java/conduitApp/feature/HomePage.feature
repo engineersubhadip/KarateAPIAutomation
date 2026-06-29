@@ -9,3 +9,10 @@ Scenario: Get 10 articles from the page
    Given url "https://conduit-api.bondaracademy.com/api/articles?limit=10&offset=0"
    When method Get
    Then status 200
+
+Scenario: Get 10 articles from the page [Optimized manner]
+   Given url "https://conduit-api.bondaracademy.com/api/articles"
+   Given param limit = 10
+   Given param offset = 0
+   When method Get
+   Then status 200
