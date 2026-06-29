@@ -17,3 +17,7 @@ Put @ignore
 I want to execute all the tags except those marked with @skipme ?
 
 mvn clean test "-Dkarate.options=--tags ~@skipme"
+
+How to run in different envirionments ?
+
+mvn clean test "-Dkarate.options=classpath:conduitApp/feature/Articles.feature" "-Dkarate.env=qa/dev"
