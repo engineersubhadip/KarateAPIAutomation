@@ -124,3 +124,31 @@ Scenario: Verify the bio section element can be string or null
    When method Get
    Then status 200
    And match each response.articles[*]..bio == "##string"
+
+Scenario: Verify each article object schema
+   Given path "articles"
+   Given params {limit : 10, offset : 0}
+   When method Get
+   Then status 200
+   And match each response.articles == 
+   """
+      {
+         "slug": "#string",
+         "title": "#string",
+         "description": "#string",
+         "keyNotPresent" : "##string",
+         "body": "#string",
+         "tagList": "#[] #string",
+         "createdAt": "#ignore",
+         "updatedAt": "#ignore",
+         "favorited": "#boolean",
+         "favoritesCount": "#number",
+         "author": {
+               "username": "#string",
+               "bio": "##string",
+               "image": "#string",
+               "following": "#boolean"
+         }
+      }
+    """
+    And match response.articles == "#[10]"
