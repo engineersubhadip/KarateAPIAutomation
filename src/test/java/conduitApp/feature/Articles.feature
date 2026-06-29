@@ -1,9 +1,7 @@
 Feature: Articles
 
-Background: Setting up Base url
+Background: Capturing the user token during login process
    Given url "https://conduit-api.bondaracademy.com/api/"
-
-Scenario: Capture user token
    Given path "users/login"
    Given request 
    """
@@ -17,8 +15,8 @@ Scenario: Capture user token
    When method Post
    Then status 200
    * def userToken = "Token "+response.user.token
-   * print userToken
 
+Scenario: Creating article
    Given path "articles/"
    Given header Authorization = userToken
    Given request
