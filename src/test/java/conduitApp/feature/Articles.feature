@@ -25,7 +25,7 @@ Scenario: Capture user token
    """
    {
     "article": {
-        "title": "header011234",
+        "title": "Header1",
         "description": "header2",
         "body": "header3",
         "tagList": []
@@ -34,5 +34,5 @@ Scenario: Capture user token
    """
    When method Post
    Then status 201
-   And match response.article.title == "header011234"
+   And match response.article.title == "Header1"
    And match response.article.description == "header2"
