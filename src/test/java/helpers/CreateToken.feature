@@ -7,8 +7,8 @@ Scenario: Create user token for login purpose
    """
    {
     "user": {
-        "email": "karate011@test.com",
-        "password": "Karate011"
+        "email": #(email),
+        "password": #(password)
        }
    }
    """
