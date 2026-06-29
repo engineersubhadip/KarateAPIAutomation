@@ -9,3 +9,7 @@ How to run a particular scenario from all the feature files ?
 [Assume this scenario has a tag @Debug]
 
 mvn clean test "-Dkarate.options=--tags @Debug"
+
+How to ignore certain scenario ?
+
+Put @ignore
