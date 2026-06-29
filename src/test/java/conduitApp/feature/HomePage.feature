@@ -103,3 +103,24 @@ Scenario: Verify at least one of the bio is null [Path Shortner]
    When method Get
    Then status 200
    And match response.articles[*]..bio contains null
+
+Scenario: Verify the following element is a boolean
+   Given path "articles"
+   Given params {limit : 10, offset : 0}
+   When method Get
+   Then status 200
+   And match each response.articles[*]..following == "#boolean"
+
+Scenario: Verify the favouriteCount element should be a number
+   Given path "articles"
+   Given params {limit : 10, offset : 0}
+   When method Get
+   Then status 200
+   And match each response.articles[*]..favoritesCount == "#number"
+
+Scenario: Verify the bio section element can be string or null
+   Given path "articles"
+   Given params {limit : 10, offset : 0}
+   When method Get
+   Then status 200
+   And match each response.articles[*]..bio == "##string"
