@@ -1,7 +1,7 @@
 Feature: Tests for the home page
 
 Background: Define URL
-   Given url "https://conduit-api.bondaracademy.com/api/"
+   Given url baseURL
 
 Scenario: Check status code 200 for tags end-point
    Given path "tags"

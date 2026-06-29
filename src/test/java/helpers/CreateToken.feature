@@ -1,14 +1,15 @@
 Feature: Create user token
 
 Scenario: Create user token for login purpose
-   Given url "https://conduit-api.bondaracademy.com/api/"
+   Given url baseURL
    Given path "users/login"
    Given request 
+
    """
    {
     "user": {
-        "email": #(email),
-        "password": #(password)
+        "email": #(userEmail),
+        "password": #(userPassword)
        }
    }
    """

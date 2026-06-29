@@ -1,8 +1,8 @@
 Feature: Articles
 
 Background: Capturing the user token during login process
-   Given url "https://conduit-api.bondaracademy.com/api/"
-   * def authToken = callonce read('classpath:helpers/CreateToken.feature') {"email" : "karate011@test.com", "password" : "Karate011"}
+   Given url baseURL
+   * def authToken = callonce read('classpath:helpers/CreateToken.feature')
    * def token = authToken.userToken
 
 @ignore
