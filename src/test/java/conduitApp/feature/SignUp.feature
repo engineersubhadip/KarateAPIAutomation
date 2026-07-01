@@ -2,11 +2,12 @@ Feature: Testing the SignUp Feature
 
    Background: Setting up the base url
       Given url baseURL
-   Scenario: A new user having unique set of values is able to sign-up
       * def randomData = read("classpath:helpers/generateRandomData.js");
       * def randomEmail = randomData().generateRandomEmail();
       * def randomUserName = randomData().generateRandomUserName();
 
+
+   Scenario: A new user having unique set of values is able to sign-up
       Given path "users"
       Given request
          """
@@ -28,7 +29,6 @@ Feature: Testing the SignUp Feature
          }
          """
 
-   @Debug
    Scenario Outline: Validate the error messages for the sign-up feature
       * def randomData = read("classpath:helpers/generateRandomData.js");
       * def randomEmail = randomData().generateRandomEmail();
