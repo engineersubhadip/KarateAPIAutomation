@@ -30,34 +30,27 @@ Feature: Testing the SignUp Feature
 
    @Debug
    Scenario Outline: Validate the error messages for the sign-up feature
+      * def randomData = read("classpath:helpers/generateRandomData.js");
+      * def randomEmail = randomData().generateRandomEmail();
+      * def randomUserName = randomData().generateRandomUserName();
       Given path "users"
       Given request
          """
          {
-         "user": {
-         "email": #(UserEmail),
-         "password": "telemachus",
-         "username": #(UserName)
-         }
+            "user": {
+               "email": <UserEmail>,
+               "password": "telemachus",
+               "username": <UserName>
+            }
          }
          """
       When method Post
       Then status 422
-      And match response ==
-         """
-         {
-            "errors": {
-               "email": [
-                  "has already been taken"
-               ],
-               "username": [
-                  "has already been taken"
-               ]
-            }
-         }
-         """
+      And match response == <Expected Schema>
 
       Examples:
-         | UserEmail      | UserName      |
-         | te011@test.com | telemachus212 |
+         | UserEmail      | UserName          | Expected Schema                                                                       |
+         | te011@test.com | telemachus212     | {"errors":{"email":["has already been taken"],"username":["has already been taken"]}} |
+         | #(randomEmail) | telemachus212     | {"errors":{"username":["has already been taken"]}}                                    |
+         | te011@test.com | #(randomUserName) | {"errors":{"email":["has already been taken"]}}                                       |
 
