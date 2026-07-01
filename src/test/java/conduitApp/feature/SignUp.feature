@@ -43,6 +43,19 @@ Feature: Testing the SignUp Feature
          """
       When method Post
       Then status 422
+      And match response ==
+         """
+         {
+            "errors": {
+               "email": [
+                  "has already been taken"
+               ],
+               "username": [
+                  "has already been taken"
+               ]
+            }
+         }
+         """
 
       Examples:
          | UserEmail      | UserName      |
