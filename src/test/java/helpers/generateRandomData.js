@@ -1,25 +1,24 @@
 function fn() {
   return {
-    randomEmail: function () {
+    generateRandomEmail: function () {
+      let result = "";
+      for (let i = 0; i < 5; i++) {
+        const randNum = Math.floor(Math.random() * 10) + 97;
+        const randChar = String.fromCharCode(randNum);
+        result += randChar;
+      }
+      const finalResult = result + "@test.com";
+      return finalResult;
+    },
+
+    generateRandomUserName: function () {
       let result = "";
       for (let i = 0; i < 8; i++) {
-        const randomNum = Math.floor(Math.random() * 10) + 97;
-        result += String.fromCharCode(randomNum);
+        const randNum = Math.floor(Math.random() * 10) + 97;
+        const randChar = String.fromCharCode(randNum);
+        result += randChar;
       }
-      return result + "@test.com";
-    },
-    randomUserName: function () {
-      let firstHalf = "";
-      for (let i = 0; i < 5; i++) {
-        const randomNum = Math.floor(Math.random() * 10) + 97;
-        firstHalf += String.fromCharCode(randomNum);
-      }
-      let secondHalf = "";
-      for (let i = 0; i < 5; i++) {
-        const randomNum = Math.floor(Math.random() * 10);
-        secondHalf += randomNum;
-      }
-      return firstHalf + secondHalf;
+      return result;
     },
   };
 }
