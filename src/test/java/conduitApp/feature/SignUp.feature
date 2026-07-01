@@ -19,8 +19,8 @@ Scenario: A new user having unique set of values is able to sign-up
    {
       "user": {
          "id": "#number",
-         "email": "#string",
-         "username": "#string",
+         "email": #(randomEmail),
+         "username": #(randomUserName),
          "bio": null,
          "image": "#ignore",
          "token": "#string"
