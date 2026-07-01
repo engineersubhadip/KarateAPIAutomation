@@ -1,0 +1,12 @@
+{
+   "id": "#number",
+   "createdAt": "#ignore",
+   "updatedAt": "#ignore",
+   "body": "#string",
+   "author": {
+      "username": "#string",
+      "bio": null,
+      "image": "#ignore",
+      "following": "#boolean"
+   }
+}

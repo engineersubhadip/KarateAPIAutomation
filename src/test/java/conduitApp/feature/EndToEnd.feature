@@ -82,7 +82,7 @@ Feature: End to end scenario, encompassing everything
         # Step 8: Verify that slug ID from Step 2 exist in one of the favorite articles
         And match allFavArticles[*].slug contains firstSlugID
 
-
+    @Debug
     Scenario: Comment articles
         * def commentJson = read("classpath:testData/commentBody.json")
         * def randomData = read("classpath:helpers/generateRandomData.js")
@@ -101,6 +101,21 @@ Feature: End to end scenario, encompassing everything
         Given header Authorization = authToken
         When method Get
         Then status 200
+        # * How to add conditionals in your feature file
+        * def currentSchemaLength = response.comments.length
+        * def captureTargetSchema =
+            """
+            function (responseLength) {
+            if (responseLength == 0) {
+            return [karate.read("classpath:schemas/emptyCommentSchema.json"), 0]
+            } else {
+            return [karate.read("classpath:schemas/filledCommentSchema.json"), 1]
+            }
+            }
+            """
+        * def expectedCreds = call captureTargetSchema currentSchemaLength
+        * print "DEBUG -> ", actualValue
+        # * End of the above
         # Step 4: Verify response schema
         # Step 5: Get the count of the comments array lentgh and save to variable
         * def originalCommentsCount = response.comments.length
