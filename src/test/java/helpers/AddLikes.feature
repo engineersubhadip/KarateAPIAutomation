@@ -1,3 +1,5 @@
+# Here after verifying status code, we are verifying that the favCount has increased by 1
+# We are verifying that we have indeed made the fav count increment to the original slugID
 Feature: Increase like count for an article
 
    Background: Preconditions
