@@ -15,4 +15,5 @@ Feature: Increase like count for an article
       When method Post
       Then status 200
       And match response.article.slug == slugID
+      * def newFavCount = response.article.favoritesCount
       And match response.article.favoritesCount == oldFavCount + 1

@@ -5,7 +5,6 @@ Feature: User will like the first article if it has favourite count more than 3
       * def token = callonce read("classpath:helpers/CreateToken.feature")
       * def authToken = token.userToken
 
-
    Scenario: Conditional Logic in karate
       Given path "articles"
       Given params {limit : 10, offset : 0}
