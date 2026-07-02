@@ -6,7 +6,6 @@ Feature: Home Work
         * def token = callonce read("classpath:helpers/CreateToken.feature")
         * def authToken = token.userToken
 
-    @Debug
     Scenario: Favorite articles
         # Step 1: Get atricles of the global feed
         Given path "articles"
@@ -49,6 +48,8 @@ Feature: Home Work
         And match each response.articles == listOfAllFavArtSchema
         # Step 8: Verify that slug ID from Step 2 exist in one of the favorite articles
         And match response.articles[*].slug contains firstArtSlugID
+
+
     Scenario: Comment articles
         # Step 1: Get atricles of the global feed
         # Step 2: Get the slug ID for the first arice, save it to variable
