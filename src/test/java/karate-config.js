@@ -10,10 +10,12 @@ function fn() {
   if (env == "dev") {
     config.userEmail = "karate011@test.com";
     config.userPassword = "Karate011";
+    config.userName = "Karate011";
   }
   if (env == "qa") {
     config.userEmail = "karate0112@test.com";
     config.userPassword = "Karate0112";
+    config.userName = "Karate0112";
   }
   return config;
 }

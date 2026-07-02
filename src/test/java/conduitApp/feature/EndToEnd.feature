@@ -82,7 +82,7 @@ Feature: End to end scenario, encompassing everything
         # Step 8: Verify that slug ID from Step 2 exist in one of the favorite articles
         And match allFavArticles[*].slug contains firstSlugID
 
-    @Debug
+
     Scenario: Comment articles
         * def commentJson = read("classpath:testData/commentBody.json")
         * def randomData = read("classpath:helpers/generateRandomData.js")
